@@ -1,0 +1,44 @@
+/* Custom dropdown styles to fix positioning */
+.tp-main-menu nav > ul > li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 260px;
+  z-index: 99;
+  opacity: 0;
+  padding: 12px 0;
+  transition: 0.5s;
+  text-align: start;
+  visibility: hidden;
+  border-radius: 14px;
+  transform-origin: 0 0;
+  transform: scale(1, 0);
+  backdrop-filter: blur(40px);
+  background: rgba(38, 37, 40, 0.9);
+  box-shadow: 0 20px 30px -8px rgba(19, 19, 22, 0.1);
+}
+
+/* Ensure dropdown appears below, not to the side */
+.tp-main-menu nav > ul > li .submenu li .submenu {
+  top: 0;
+  left: 100%;
+}
+
+/* Override any conflicting styles */
+.tp-main-menu nav ul li:hover > .submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hero Video Background */
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.3;
+}
