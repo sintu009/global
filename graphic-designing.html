@@ -66,6 +66,127 @@
         max-width: 100%;
         border-radius: 6px;
     }
+
+    /* Modern Service Cards */
+    .service-card-modern {
+        position: relative;
+        height: 100%;
+        padding-bottom: 10px;
+    }
+
+    .service-card-inner {
+        position: relative;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        padding: 45px 35px;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(230, 192, 44, 0.1);
+        height: 100%;
+    }
+
+    .service-card-inner:hover {
+        transform: translateY(-10px);
+        border-color: rgba(230, 192, 44, 0.5);
+        box-shadow: 0 20px 60px rgba(230, 192, 44, 0.15);
+    }
+
+    .service-icon-wrapper {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .service-icon-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(230, 192, 44, 0.2) 0%, rgba(230, 192, 44, 0.05) 100%);
+        border-radius: 50%;
+        transition: all 0.5s ease;
+    }
+
+    .service-card-inner:hover .service-icon-bg {
+        transform: scale(1.2) rotate(180deg);
+        background: linear-gradient(135deg, rgba(230, 192, 44, 0.3) 0%, rgba(230, 192, 44, 0.1) 100%);
+    }
+
+    .service-icon-wrapper svg {
+        position: relative;
+        z-index: 2;
+        transition: all 0.4s ease;
+    }
+
+    .service-card-inner:hover .service-icon-wrapper svg {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(230, 192, 44, 0.5));
+    }
+
+    .service-card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top right, rgba(230, 192, 44, 0.08) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+    }
+
+    .service-card-inner:hover .service-card-overlay {
+        opacity: 1;
+    }
+
+    .service-card-inner::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(135deg, #e6c02c, transparent, #e6c02c);
+        border-radius: 20px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: -1;
+    }
+
+    .service-card-inner:hover::before {
+        opacity: 0.3;
+        animation: borderGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    .service-card-inner h4 {
+        position: relative;
+        z-index: 2;
+        transition: color 0.3s ease;
+    }
+
+    .service-card-inner:hover h4 {
+        color: #e6c02c;
+    }
+
+    .service-card-inner p {
+        position: relative;
+        z-index: 2;
+    }
 </style>
 
 <body class="tp-magic-cursor loaded">
@@ -369,28 +490,55 @@
 
 
                 <!-- tp-product-hero-area-start -->
-                <div class="tp-product-hero pre-header tp-bg-grey-8 pt-200 pb-150">
-                    <div class="container">
+                <div class="tp-product-hero pre-header tp-bg-grey-8 pt-200 pb-150"
+                    style="position: relative; overflow: hidden;">
+                    <div class="hero-animated-bg"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1;">
+                        <div
+                            style="position: absolute; top: 20%; left: 10%; width: 300px; height: 300px; background: radial-gradient(circle, #e6c02c 0%, transparent 70%); animation: float 6s ease-in-out infinite;">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: 20%; right: 15%; width: 250px; height: 250px; background: radial-gradient(circle, #e6c02c 0%, transparent 70%); animation: float 8s ease-in-out infinite reverse;">
+                        </div>
+                    </div>
+                    <div class="container" style="position: relative; z-index: 2;">
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
                                 <div class="tp-product-hero-content text-center">
-                                    <h2 class="mb-30 tp-ff-dm tp-text-common-white fs-70 fs-xs-40">Premium
-                                        <span style="color: #e6c02c;">Graphic Design</span>
+                                    <div class="hero-badge mb-30"
+                                        style="display: inline-block; padding: 8px 20px; background: rgba(230, 192, 44, 0.1); border: 1px solid rgba(230, 192, 44, 0.3); border-radius: 50px; color: #e6c02c; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
+                                        ✨ CREATIVE EXCELLENCE
+                                    </div>
+                                    <h2 class="mb-30 tp-ff-dm tp-text-common-white fs-70 fs-xs-40"
+                                        style="line-height: 1.2;">Premium
+                                        <span style="color: #e6c02c; position: relative; display: inline-block;">
+                                            Graphic Design
+                                            <svg style="position: absolute; bottom: -10px; left: 0; width: 100%; height: 12px;"
+                                                viewBox="0 0 200 12" fill="none">
+                                                <path d="M2 10C50 5, 100 5, 198 10" stroke="#e6c02c" stroke-width="3"
+                                                    fill="none" opacity="0.5" />
+                                            </svg>
+                                        </span>
                                         Services
                                     </h2>
-                                    <p class="tp-text-grey-2 fs-18 mb-40 lh-150-per">
+                                    <p class="tp-text-grey-2 fs-18 mb-40 lh-150-per"
+                                        style="max-width: 700px; margin-left: auto; margin-right: auto;">
                                         Transform your brand with exceptional visual identity, logo design, print
-                                        materials,<br>
+                                        materials,
                                         and digital graphics that communicate your vision with stunning impact and
                                         professional excellence.
                                     </p>
-                                    <div class="tp-hero-btn-wrap d-flex justify-content-center gap-3">
-                                        <a href="#"
-                                            class="tp-btn-lg d-inline-block lh-1 tp-round-26 fs-16 fw-600 tp-bg-common-white tp-text-common-black-5 hover-bg-primary">
-                                            Get Started
+                                    <div class="tp-hero-btn-wrap d-flex justify-content-center gap-3 flex-wrap">
+                                        <a href="#" class="tp-btn-lg d-inline-block lh-1 tp-round-26 fs-16 fw-600"
+                                            style="padding: 18px 35px; background: #e6c02c; color: #000; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(230, 192, 44, 0.3);"
+                                            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(230, 192, 44, 0.4)'"
+                                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(230, 192, 44, 0.3)'">
+                                            Get Started →
                                         </a>
                                         <a href="#" class="tp-btn-lg d-inline-block lh-1 tp-round-26 fs-16 fw-600"
-                                            style="background: transparent; border: 2px solid #e6c02c; color: #e6c02c;">
+                                            style="padding: 18px 35px; background: transparent; border: 2px solid #e6c02c; color: #e6c02c; transition: all 0.3s ease;"
+                                            onmouseover="this.style.background='rgba(230, 192, 44, 0.1)'"
+                                            onmouseout="this.style.background='transparent'">
                                             View Portfolio
                                         </a>
                                     </div>
@@ -402,7 +550,7 @@
                 <!-- tp-product-hero-area-end -->
 
                 <!-- service area start -->
-                <div class="al-service-seo-area pt-120 pb-70 tp-bg-common-black">
+                <div class="al-service-seo-area pt-120 pb-10 tp-bg-common-black">
                     <div class="container">
                         <div class="al-service-seo-title-wrap mb-70">
                             <div class="row">
@@ -420,148 +568,118 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row row-gap-4">
                             <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="al-service-seo-item mb-50"
-                                    style="background: #1a1a1a; padding: 40px 30px; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='#e6c02c'"
-                                    onmouseout="this.style.borderColor='transparent'">
-                                    <div class="al-service-seo-icon mb-30">
-                                        <span
-                                            style="background: #e6c02c; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                <div class="service-card-modern mb-50">
+                                    <div class="service-card-inner">
+                                        <div class="service-icon-wrapper">
+                                            <div class="service-icon-bg"></div>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                                                 <path d="M12 2L14 8H20L15 12L17 18L12 14L7 18L9 12L4 8H10L12 2Z"
-                                                    stroke="#000" stroke-width="2" fill="none" />
+                                                    stroke="#e6c02c" stroke-width="2" fill="none" />
                                             </svg>
-                                        </span>
-                                    </div>
-                                    <div class="al-service-seo-content">
-                                        <h4 class="tp-text-common-white mb-20 fs-24">Brand Identity</h4>
-                                        <p class="tp-text-grey-2 fs-16">Complete brand identity systems including logos,
-                                            color palettes, typography, and brand guidelines that establish strong
-                                            visual recognition and market presence.</p>
+                                        </div>
+                                        <h4 class="tp-text-common-white mb-15 fs-24 fw-600">Brand Identity</h4>
+                                        <p class="tp-text-grey-2 fs-16 lh-150-per">Complete brand identity systems
+                                            including logos, color palettes, typography, and brand guidelines that
+                                            establish strong visual recognition.</p>
+                                        <div class="service-card-overlay"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="al-service-seo-item mb-50"
-                                    style="background: #1a1a1a; padding: 40px 30px; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='#e6c02c'"
-                                    onmouseout="this.style.borderColor='transparent'">
-                                    <div class="al-service-seo-icon mb-30">
-                                        <span
-                                            style="background: #e6c02c; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4 4H20V20H4V4Z" stroke="#000" stroke-width="2" fill="none" />
-                                                <path d="M8 8H16M8 12H16M8 16H12" stroke="#000" stroke-width="2" />
+                                <div class="service-card-modern mb-50">
+                                    <div class="service-card-inner">
+                                        <div class="service-icon-wrapper">
+                                            <div class="service-icon-bg"></div>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                                <path d="M4 4H20V20H4V4Z" stroke="#e6c02c" stroke-width="2"
+                                                    fill="none" />
+                                                <path d="M8 8H16M8 12H16M8 16H12" stroke="#e6c02c" stroke-width="2" />
                                             </svg>
-                                        </span>
-                                    </div>
-                                    <div class="al-service-seo-content">
-                                        <h4 class="tp-text-common-white mb-20 fs-24">Print Design</h4>
-                                        <p class="tp-text-grey-2 fs-16">High-quality print materials including
-                                            brochures, business cards, posters, packaging, and marketing collateral
-                                            designed for maximum visual impact and professional presentation.</p>
+                                        </div>
+                                        <h4 class="tp-text-common-white mb-15 fs-24 fw-600">Print Design</h4>
+                                        <p class="tp-text-grey-2 fs-16 lh-150-per">High-quality print materials
+                                            including brochures, business cards, posters, packaging, and marketing
+                                            collateral designed for maximum impact.</p>
+                                        <div class="service-card-overlay"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="al-service-seo-item mb-50"
-                                    style="background: #1a1a1a; padding: 40px 30px; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='#e6c02c'"
-                                    onmouseout="this.style.borderColor='transparent'">
-                                    <div class="al-service-seo-icon mb-30">
-                                        <span
-                                            style="background: #e6c02c; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#000"
+                                <div class="service-card-modern mb-50">
+                                    <div class="service-card-inner">
+                                        <div class="service-icon-wrapper">
+                                            <div class="service-icon-bg"></div>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#e6c02c"
                                                     stroke-width="2" fill="none" />
-                                                <path d="M3 8H21M8 3V8M16 3V8" stroke="#000" stroke-width="2" />
+                                                <path d="M3 8H21M8 3V8M16 3V8" stroke="#e6c02c" stroke-width="2" />
                                             </svg>
-                                        </span>
-                                    </div>
-                                    <div class="al-service-seo-content">
-                                        <h4 class="tp-text-common-white mb-20 fs-24">Digital Graphics</h4>
-                                        <p class="tp-text-grey-2 fs-16">Social media graphics, web banners, digital
-                                            advertisements, and online marketing materials optimized for digital
-                                            platforms and user engagement.</p>
+                                        </div>
+                                        <h4 class="tp-text-common-white mb-15 fs-24 fw-600">Digital Graphics</h4>
+                                        <p class="tp-text-grey-2 fs-16 lh-150-per">Social media graphics, web banners,
+                                            digital advertisements, and online marketing materials optimized for digital
+                                            platforms.</p>
+                                        <div class="service-card-overlay"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="al-service-seo-item mb-50"
-                                    style="background: #1a1a1a; padding: 40px 30px; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='#e6c02c'"
-                                    onmouseout="this.style.borderColor='transparent'">
-                                    <div class="al-service-seo-icon mb-30">
-                                        <span
-                                            style="background: #e6c02c; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="5" width="18" height="14" rx="2" stroke="#000"
+                                <div class="service-card-modern mb-50">
+                                    <div class="service-card-inner">
+                                        <div class="service-icon-wrapper">
+                                            <div class="service-icon-bg"></div>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                                <rect x="3" y="5" width="18" height="14" rx="2" stroke="#e6c02c"
                                                     stroke-width="2" fill="none" />
-                                                <path d="M9 12L12 15L15 12" stroke="#000" stroke-width="2"
+                                                <path d="M9 12L12 15L15 12" stroke="#e6c02c" stroke-width="2"
                                                     stroke-linecap="round" />
                                             </svg>
-                                        </span>
-                                    </div>
-                                    <div class="al-service-seo-content">
-                                        <h4 class="tp-text-common-white mb-20 fs-24">YouTube Thumbnail</h4>
-                                        <p class="tp-text-grey-2 fs-16">Custom thumbnails designed to grab attention
-                                            fast, highlight your video's key message, and boost click-through rates with
-                                            clean visuals and clear text.</p>
+                                        </div>
+                                        <h4 class="tp-text-common-white mb-15 fs-24 fw-600">YouTube Thumbnail</h4>
+                                        <p class="tp-text-grey-2 fs-16 lh-150-per">Custom thumbnails designed to grab
+                                            attention fast, highlight your video's key message, and boost click-through
+                                            rates with clean visuals.</p>
+                                        <div class="service-card-overlay"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="al-service-seo-item mb-50"
-                                    style="background: #1a1a1a; padding: 40px 30px; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='#e6c02c'"
-                                    onmouseout="this.style.borderColor='transparent'">
-                                    <div class="al-service-seo-icon mb-30">
-                                        <span
-                                            style="background: #e6c02c; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 18L10 10L14 14L19 6" stroke="#000" stroke-width="2"
+                                <div class="service-card-modern mb-50">
+                                    <div class="service-card-inner">
+                                        <div class="service-icon-wrapper">
+                                            <div class="service-icon-bg"></div>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                                <path d="M5 18L10 10L14 14L19 6" stroke="#e6c02c" stroke-width="2"
                                                     stroke-linecap="round" fill="none" />
-                                                <circle cx="5" cy="18" r="2" fill="#000" />
-                                                <circle cx="19" cy="6" r="2" fill="#000" />
+                                                <circle cx="5" cy="18" r="2" fill="#e6c02c" />
+                                                <circle cx="19" cy="6" r="2" fill="#e6c02c" />
                                             </svg>
-                                        </span>
-                                    </div>
-                                    <div class="al-service-seo-content">
-                                        <h4 class="tp-text-common-white mb-20 fs-24">Illustration</h4>
-                                        <p class="tp-text-grey-2 fs-16">Custom illustrations, icons, and graphics that
-                                            add unique personality and visual interest to your brand communications and
-                                            <br />marketing materials.
-                                        </p>
+                                        </div>
+                                        <h4 class="tp-text-common-white mb-15 fs-24 fw-600">Illustration</h4>
+                                        <p class="tp-text-grey-2 fs-16 lh-150-per">Custom illustrations, icons, and
+                                            graphics that add unique personality and visual interest to your brand
+                                            communications and marketing materials.</p>
+                                        <div class="service-card-overlay"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="al-service-seo-item mb-50"
-                                    style="background: #1a1a1a; padding: 40px 30px; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='#e6c02c'"
-                                    onmouseout="this.style.borderColor='transparent'">
-                                    <div class="al-service-seo-icon mb-30">
-                                        <span
-                                            style="background: #e6c02c; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                <div class="service-card-modern mb-50">
+                                    <div class="service-card-inner">
+                                        <div class="service-icon-wrapper">
+                                            <div class="service-icon-bg"></div>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                                                 <path d="M12 2L15 9L22 10L17 15L19 22L12 18L5 22L7 15L2 10L9 9L12 2Z"
-                                                    stroke="#000" stroke-width="2" fill="none" />
+                                                    stroke="#e6c02c" stroke-width="2" fill="none" />
                                             </svg>
-                                        </span>
-                                    </div>
-                                    <div class="al-service-seo-content">
-                                        <h4 class="tp-text-common-white mb-20 fs-24">Packaging Design</h4>
-                                        <p class="tp-text-grey-2 fs-16">Product packaging that stands out on shelves,
-                                            communicates brand values, and creates memorable unboxing experiences that
-                                            drive customer loyalty and sales.</p>
+                                        </div>
+                                        <h4 class="tp-text-common-white mb-15 fs-24 fw-600">Packaging Design</h4>
+                                        <p class="tp-text-grey-2 fs-16 lh-150-per">Product packaging that stands out on
+                                            shelves, communicates brand values, and creates memorable unboxing
+                                            experiences that drive loyalty.</p>
+                                        <div class="service-card-overlay"></div>
                                     </div>
                                 </div>
                             </div>
