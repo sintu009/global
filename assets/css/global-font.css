@@ -1,7 +1,3 @@
-/* Global Font Override - Apply Funnel Display to entire page */
-body,
-h1, h2, h3, h4, h5, h6,
-p, span, a, button, input, textarea, select,
-div, li, label {
-  font-family: var(--tp-ff-funnel) !important;
+* {
+  font-family: 'Poppins', sans-serif !important;
 }
