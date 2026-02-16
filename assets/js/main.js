@@ -802,8 +802,8 @@
 	sv.add("(min-width: 1199px)", () => {
 		let tl = gsap.timeline();
 		let projectpanels = document.querySelectorAll('.tp-service-pp-panel');
-		let baseOffset = 130;
-		let offsetIncrement = 130;
+		let baseOffset = 100;
+		let offsetIncrement = 80;
 
 		projectpanels.forEach((section, index) => {
 			let topOffset = baseOffset + (index * offsetIncrement);
@@ -813,7 +813,7 @@
 					pin: section,
 					scrub: 1,
 					start: `top ${topOffset}px`,
-					end: "bottom 120%",
+					end: "bottom 100%",
 					endTrigger: '.tp-service-pp-pin',
 					pinSpacing: false,
 					markers: false,
