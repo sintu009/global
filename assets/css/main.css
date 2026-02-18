@@ -46868,4 +46868,16 @@ only screen and (min-width: 576px) and (max-width: 767px) {
   color: var(--tp-common-white);
 }
 
+
+.gradient-shine {
+  background: linear-gradient(90deg, #06b6d4, #ec4899, #8b5cf6);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  animation: gradient-move 6s ease infinite;
+}
+
 /*# sourceMappingURL=main.css.map */
