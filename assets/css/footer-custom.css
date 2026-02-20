@@ -212,6 +212,18 @@
   font-family: var(--tp-ff-funnel);
 }
 
+@media (max-width: 768px) {
+  .tp-footer-bottom .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .tp-footer-bottom p {
+    font-size: 0.85rem;
+  }
+}
+
 /* Footer Logos Wrapper */
 .footer-logos-wrapper {
   display: flex;
