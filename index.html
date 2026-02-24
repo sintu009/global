@@ -209,7 +209,8 @@
          </div>
          <div class="tp-offcanvas-content d-none d-xl-block">
             <h3 class="tp-offcanvas-title">Transform Your Vision!</h3>
-            <p>Professional creative services for graphic design, video editing, and 3D rendering that bring your ideas to life.</p>
+            <p>Professional creative services for graphic design, video editing, and 3D rendering that bring your ideas
+               to life.</p>
          </div>
          <div class="tp-offcanvas-menu d-xl-none">
             <nav></nav>
@@ -218,26 +219,34 @@
             <div class="row gx-2">
                <div class="col-md-3 col-3">
                   <div class="tp-offcanvas-gallery-img fix">
-                     <a class="popup-image" href="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop"><img
-                           src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Creative Design"></a>
+                     <a class="popup-image"
+                        href="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop"><img
+                           src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop"
+                           alt="Creative Design"></a>
                   </div>
                </div>
                <div class="col-md-3 col-3">
                   <div class="tp-offcanvas-gallery-img fix">
-                     <a class="popup-image" href="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=400&fit=crop"><img
-                           src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=400&fit=crop" alt="3D Rendering"></a>
+                     <a class="popup-image"
+                        href="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=400&fit=crop"><img
+                           src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=400&fit=crop"
+                           alt="3D Rendering"></a>
                   </div>
                </div>
                <div class="col-md-3 col-3">
                   <div class="tp-offcanvas-gallery-img fix">
-                     <a class="popup-image" href="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=400&fit=crop"><img
-                           src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=400&fit=crop" alt="Video Production"></a>
+                     <a class="popup-image"
+                        href="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=400&fit=crop"><img
+                           src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=400&fit=crop"
+                           alt="Video Production"></a>
                   </div>
                </div>
                <div class="col-md-3 col-3">
                   <div class="tp-offcanvas-gallery-img fix">
-                     <a class="popup-image" href="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=400&fit=crop"><img
-                           src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=400&fit=crop" alt="Digital Content"></a>
+                     <a class="popup-image"
+                        href="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=400&fit=crop"><img
+                           src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=400&fit=crop"
+                           alt="Digital Content"></a>
                   </div>
                </div>
             </div>
@@ -1806,6 +1815,25 @@
       document.getElementById('videoPopup').onclick = function (e) {
          if (e.target.id === 'videoPopup') closeVideoPopup();
       };
+
+      // Close mobile menu only for links with hash that navigate to another page
+      document.addEventListener('DOMContentLoaded', function () {
+         const mobileMenuLinks = document.querySelectorAll('.tp-offcanvas-menu a[href*="#"]');
+         const offcanvas = document.querySelector('.tp-offcanvas');
+         const bodyOverlay = document.querySelector('.body-overlay');
+
+         mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+               const href = this.getAttribute('href');
+               // Only close if link goes to another page with hash (contains .html#)
+               if (href && href.includes('.html#')) {
+                  if (offcanvas) offcanvas.classList.remove('opened');
+                  if (bodyOverlay) bodyOverlay.classList.remove('opened');
+               }
+            });
+         });
+      });
+
    </script>
 </body>
 

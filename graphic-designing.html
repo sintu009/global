@@ -1214,6 +1214,27 @@
     <script src="assets/js/throwable.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/tp-cursor.js"></script>
+
+    <script>
+        // Close mobile menu only for links with hash that navigate to another page
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuLinks = document.querySelectorAll('.tp-offcanvas-menu a[href*="#"]');
+            const offcanvas = document.querySelector('.tp-offcanvas');
+            const bodyOverlay = document.querySelector('.body-overlay');
+
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    // Only close if link goes to another page with hash (contains .html#)
+                    if (href && href.includes('.html#')) {
+                        if (offcanvas) offcanvas.classList.remove('opened');
+                        if (bodyOverlay) bodyOverlay.classList.remove('opened');
+                    }
+                });
+            });
+        });
+
+    </script>
 </body>
 
 </html>
